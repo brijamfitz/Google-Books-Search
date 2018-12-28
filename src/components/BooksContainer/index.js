@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Container from "./Container";
-import Row from "./Row";
-import Col from "./Col";
-import Card from "./Card";
-import SearchForm from "./SearchForm";
-import BookDetail from "./BookDetail";
-import API from "../utils/API";
+import Container from "../Container";
+import Row from "../Row";
+import Col from "../Col";
+import Card from "../Card";
+import SearchForm from "../SearchForm";
+import BookDetail from "../BookDetail";
+import API from "../../utils/API";
 
 class BooksContainer extends Component {
   state = {
@@ -19,7 +19,7 @@ class BooksContainer extends Component {
 
   // When this component mounts, search for the movie "The Matrix"
   componentDidMount() {
-    this.searchBooks("harry potter");
+    this.searchBooks("the satanic bible");
   }
 
   searchBooks = query => {
