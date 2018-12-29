@@ -31,7 +31,8 @@ class BooksContainer extends Component {
             title: res.data.items[0].volumeInfo.title,
             authors: res.data.items[0].volumeInfo.authors,
             description: res.data.items[0].volumeInfo.description,
-            link: res.data.items[0].volumeInfo.infoLink
+            link: res.data.items[0].volumeInfo.infoLink,
+            date: res.data.items[0].volumeInfo.publishedDate
           },
           console.log(res.data.items)
         )
@@ -63,6 +64,7 @@ class BooksContainer extends Component {
                 src={this.state.src}
                 title={this.state.title}
                 authors={this.state.authors}
+                date={this.state.date}
                 description={this.state.description}
                 link={this.state.link}
               />
