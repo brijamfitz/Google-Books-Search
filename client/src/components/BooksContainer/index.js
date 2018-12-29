@@ -12,12 +12,13 @@ class BooksContainer extends Component {
     src: "",
     title: "",
     authors: "",
+    date: "",
     description: "",
     link: "",
     search: ""
   };
 
-  // When this component mounts, search for the movie "The Matrix"
+  // When this component mounts, search for the default book
   componentDidMount() {
     this.searchBooks("the satanic bible");
   }
@@ -48,7 +49,7 @@ class BooksContainer extends Component {
     });
   };
 
-  // When the form is submitted, search the OMDB API for the value of `this.state.search`
+  // When the form is submitted, search the GoogleBooks API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
     this.searchBooks(this.state.search);
