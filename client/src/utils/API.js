@@ -3,10 +3,16 @@ const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
 // const APIKEY = "&apikey=trilogy";
 
 export default {
-  search: function(query) {
+  searchBooks: function(query) {
     return axios.get(BASEURL + query);
   },
-  saveBook: function(id) {
-    return axios.insert("/api/books/" + id);
+  getBooks: function() {
+    return axios("/api/books");
+  },
+  saveBook: function(bookData) {
+    return axios.post("/api/books", bookData);
+  },
+  deleteBook: function(id) {
+    return axios.delete("api/books/" + id);
   }
 };

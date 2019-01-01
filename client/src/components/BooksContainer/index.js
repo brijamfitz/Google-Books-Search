@@ -5,36 +5,38 @@ import Col from "../Col";
 import Card from "../Card";
 import SearchForm from "../SearchForm";
 import BookDetail from "../BookDetail";
-import SaveBtn from "../SaveBtn";
+// import SaveBtn from "../SaveBtn";
 import API from "../../utils/API";
 
 class BooksContainer extends Component {
   state = {
-    src: "",
-    title: "",
-    authors: "",
-    date: "",
-    description: "",
-    link: "",
-    search: ""
+    // src: "",
+    // title: "",
+    // authors: "",
+    // date: "",
+    // description: "",
+    // link: "",
+    // search: ""
+    books: []
   };
 
   // When this component mounts, search for the default book
   componentDidMount() {
-    this.searchBooks("the satanic bible");
+    this.searchBooks("harry potter");
   }
 
   searchBooks = query => {
-    API.search(query)
+    API.searchBooks(query)
       .then(res =>
         this.setState(
           {
-            src: res.data.items[0].volumeInfo.imageLinks.thumbnail,
-            title: res.data.items[0].volumeInfo.title,
-            authors: res.data.items[0].volumeInfo.authors,
-            description: res.data.items[0].volumeInfo.description,
-            link: res.data.items[0].volumeInfo.infoLink,
-            date: res.data.items[0].volumeInfo.publishedDate
+            // src: res.data.items[0].volumeInfo.imageLinks.thumbnail,
+            // title: res.data.items[0].volumeInfo.title,
+            // authors: res.data.items[0].volumeInfo.authors,
+            // description: res.data.items[0].volumeInfo.description,
+            // link: res.data.items[0].volumeInfo.infoLink,
+            // date: res.data.items[0].volumeInfo.publishedDate
+            books: res.data.items
           },
           console.log(res.data.items)
         )
@@ -56,22 +58,35 @@ class BooksContainer extends Component {
     this.searchBooks(this.state.search);
   };
 
+  handleSaveBook = event => {
+    event.preventDefault();
+    API.saveBook(this.state).then(res => {
+      return res.json();
+    });
+  };
+
   render() {
     return (
       <Container>
         <Row>
           <Col size="md-8">
-            <Card>
-              <BookDetail
-                src={this.state.src}
-                title={this.state.title}
-                authors={this.state.authors}
-                date={this.state.date}
-                description={this.state.description}
-                link={this.state.link}
-              />
-              <SaveBtn />
-            </Card>
+            {this.state.books.length ? (
+              <Card>
+                {this.state.books.map(book => (
+                  <BookDetail
+                    key={book.id}
+                    src={book.volumeInfo.imageLinks.thumbnail}
+                    title={book.volumeInfo.title}
+                    authors={book.volumeInfo.authors}
+                    date={book.volumeInfo.publishedDate}
+                    description={book.volumeInfo.description}
+                    link={book.volumeInfo.infoLink}
+                  />
+                ))}
+              </Card>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
           </Col>
           <Col size="md-4">
             <Card heading="Search">
