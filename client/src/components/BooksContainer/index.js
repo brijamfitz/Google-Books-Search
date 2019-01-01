@@ -5,6 +5,7 @@ import Col from "../Col";
 import Card from "../Card";
 import SearchForm from "../SearchForm";
 import BookDetail from "../BookDetail";
+import SaveBtn from "../SaveBtn";
 import API from "../../utils/API";
 
 class BooksContainer extends Component {
@@ -69,6 +70,7 @@ class BooksContainer extends Component {
                 description={this.state.description}
                 link={this.state.link}
               />
+              <SaveBtn />
             </Card>
           </Col>
           <Col size="md-4">
