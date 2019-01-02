@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
+// import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
@@ -62,7 +62,7 @@ class Books extends Component {
     event.preventDefault();
     console.log(this.state.books[0].id);
     API.saveBook({ 
-      books: this.books.state 
+      books: this.books.state[0] 
     })
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
@@ -72,10 +72,18 @@ class Books extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-8">
-            <Jumbotron>
-              <h1>Search Results</h1>
-            </Jumbotron>
+          <Col size="md-12">
+            <Card heading="Google Books Search">
+              <SearchForm
+                value={this.state.search}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-12">
             {this.state.books.length ? (
               <Card>
                 {this.state.books.map(book => (
@@ -90,22 +98,11 @@ class Books extends Component {
                     handleSaveBook={this.handleSaveBook}
                   />
                 ))}
+                
               </Card>
             ) : (
               <h3>No Results to Display</h3>
             )}
-          </Col>
-          <Col size="md-4">
-            <Jumbotron>
-              <h1>Search</h1>
-            </Jumbotron>
-            <Card heading="Search">
-              <SearchForm
-                value={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-              />
-            </Card>
           </Col>
         </Row>
         <Row>

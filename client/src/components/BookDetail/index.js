@@ -2,18 +2,18 @@ import React from "react";
 
 const BookDetail = props => {
   return (
-    <div className="text-center">
-      <img alt={props.title} className="img-fluid" src={props.src} style={{ margin: "0 auto" }} />
-      <h3>{props.title}</h3>
+    <span className="text-center">
+      <p><img alt={props.title} className="img-fluid" src={props.src} style={{ margin: "0 auto" }} /></p>
+      <p style={{ fontSize: "30px" }}>{props.title}</p>
       <p><strong>Author(s):</strong> {props.authors}</p>
-      <p><strong>Published Date:</strong> {props.date}</p>
+      <p><strong>Publish Date:</strong> {props.date}</p>
       <p><strong>Description:</strong> {props.description}</p>
-      <a href={props.link}>{props.title}</a>
-      <br />
+      <p><strong>Google Books Link:</strong> <a href={props.link}>{props.title}</a></p>
       <button onClick={props.handleSaveBook} className="btn btn-primary">
         Save Book
       </button>
-    </div>
+      <hr />
+    </span>
   );
 }
 
