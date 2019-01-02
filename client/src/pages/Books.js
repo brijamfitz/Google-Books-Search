@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
@@ -12,19 +13,13 @@ import API from "../utils/API";
 
 class Books extends Component {
   state = {
-    // src: "",
-    // title: "",
-    // authors: "",
-    // date: "",
-    // description: "",
-    // link: "",
     books: [],
     search: ""
   };
 
   // When this component mounts, search for the default book
   componentDidMount() {
-    this.searchBooks("harry potter");
+    this.searchBooks("american pyscho");
   }
 
   searchBooks = query => {
@@ -32,12 +27,6 @@ class Books extends Component {
       .then(res =>
         this.setState(
           {
-            // src: res.data.items[0].volumeInfo.imageLinks.thumbnail,
-            // title: res.data.items[0].volumeInfo.title,
-            // authors: res.data.items[0].volumeInfo.authors,
-            // description: res.data.items[0].volumeInfo.description,
-            // link: res.data.items[0].volumeInfo.infoLink,
-            // date: res.data.items[0].volumeInfo.publishedDate
             books: res.data.items,
             search: ""
           },
@@ -61,22 +50,19 @@ class Books extends Component {
     this.searchBooks(this.state.search);
   };
 
+  // Delete book from database
   deleteBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
 
+  // Save book to database
   handleSaveBook = event => {
     event.preventDefault();
     console.log(this.state.books[0].id);
-    API.saveBook({
-      title: this.state.title,
-      authors: this.state.authors,
-      description: this.state.description,
-      date: this.state.date,
-      src: this.state.src,
-      link: this.state.link,
+    API.saveBook({ 
+      books: this.books.state 
     })
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
@@ -87,6 +73,9 @@ class Books extends Component {
       <Container>
         <Row>
           <Col size="md-8">
+            <Jumbotron>
+              <h1>Search Results</h1>
+            </Jumbotron>
             {this.state.books.length ? (
               <Card>
                 {this.state.books.map(book => (
@@ -107,6 +96,9 @@ class Books extends Component {
             )}
           </Col>
           <Col size="md-4">
+            <Jumbotron>
+              <h1>Search</h1>
+            </Jumbotron>
             <Card heading="Search">
               <SearchForm
                 value={this.state.search}
@@ -122,12 +114,12 @@ class Books extends Component {
                 <List>
                   {this.state.books.map(book => (
                     <ListItem key={book.id}>
-                      <Link to={"/books/" + book.id}>
+                      <Link to={"/books/" + book._id}>
                         <strong>
                           {book.volumeInfo.title} by {book.volumeInfo.authors}
                         </strong>
                       </Link>
-                      <DeleteBtn onClick={() => this.deleteBook(book.id)} />
+                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                     </ListItem>
                   ))}
                 </List>

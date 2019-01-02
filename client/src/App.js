@@ -1,11 +1,13 @@
 import React from "react";
 import Books from "./pages/Books";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Nav from "./components/Nav";
 
 const App = () => {
     return (
       <Router>
         <div>
+          <Nav />
           <Switch>
             <Route exact path="/" component={Books} />
             <Route exact path="/books" component={Books} />
