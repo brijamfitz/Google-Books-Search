@@ -60,9 +60,14 @@ class Books extends Component {
   // Save book to database
   handleSaveBook = event => {
     event.preventDefault();
-    console.log(this.state.books[0].id);
+    console.log(this.state.books);
     API.saveBook({ 
-      books: this.books.state[0] 
+      title: this.state.books[0].volumeInfo.title,
+      src: this.state.books[0].volumeInfo.imageLinks.thumbnail,
+      authors: this.state.books[0].volumeInfo.authors,
+      date: this.state.books[0].volumeInfo.publishedDate,
+      description: this.state.books[0].volumeInfo.description,
+      link: this.state.books[0].volumeInfo.infoLink
     })
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
