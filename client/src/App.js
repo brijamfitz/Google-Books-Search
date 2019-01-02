@@ -1,6 +1,20 @@
 import React from "react";
-import BooksContainer from "./components/BooksContainer";
+import Books from "./pages/Books";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-const App = () => <BooksContainer />;
-
-export default App;
+const App = () => {
+    return (
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Books} />
+            <Route exact path="/books" component={Books} />
+            {/* <Route exact path="/books/:id" component={Detail} />
+            <Route component={NoMatch} /> */}
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+  
+  export default App;

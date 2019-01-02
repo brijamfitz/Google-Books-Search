@@ -9,6 +9,10 @@ const BookDetail = props => {
       <p><strong>Published Date:</strong> {props.date}</p>
       <p><strong>Description:</strong> {props.description}</p>
       <a href={props.link}>{props.title}</a>
+      <br />
+      <button onClick={props.handleSaveBook} className="btn btn-primary">
+        Save Book
+      </button>
     </div>
   );
 }

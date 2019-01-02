@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import Container from "../Container";
-import Row from "../Row";
-import Col from "../Col";
-import Card from "../Card";
-import SearchForm from "../SearchForm";
-import BookDetail from "../BookDetail";
-// import SaveBtn from "../SaveBtn";
-import API from "../../utils/API";
+import Container from "../components/Container";
+import Row from "../components/Row";
+import Col from "../components/Col";
+import Card from "../components/Card";
+import SearchForm from "../components/SearchForm";
+import BookDetail from "../components/BookDetail";
+import DeleteBtn from "../components/DeleteBtn";
+import { List, ListItem } from "../components/List";
+import { Link } from "react-router-dom";
+import API from "../utils/API";
 
-class BooksContainer extends Component {
+class Books extends Component {
   state = {
     // src: "",
     // title: "",
@@ -16,8 +18,8 @@ class BooksContainer extends Component {
     // date: "",
     // description: "",
     // link: "",
-    // search: ""
-    books: []
+    books: [],
+    search: ""
   };
 
   // When this component mounts, search for the default book
@@ -36,7 +38,8 @@ class BooksContainer extends Component {
             // description: res.data.items[0].volumeInfo.description,
             // link: res.data.items[0].volumeInfo.infoLink,
             // date: res.data.items[0].volumeInfo.publishedDate
-            books: res.data.items
+            books: res.data.items,
+            search: ""
           },
           console.log(res.data.items)
         )
@@ -58,11 +61,25 @@ class BooksContainer extends Component {
     this.searchBooks(this.state.search);
   };
 
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
+
   handleSaveBook = event => {
     event.preventDefault();
-    API.saveBook(this.state).then(res => {
-      return res.json();
-    });
+    console.log(this.state.books[0].id);
+    API.saveBook({
+      title: this.state.title,
+      authors: this.state.authors,
+      description: this.state.description,
+      date: this.state.date,
+      src: this.state.src,
+      link: this.state.link,
+    })
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -81,6 +98,7 @@ class BooksContainer extends Component {
                     date={book.volumeInfo.publishedDate}
                     description={book.volumeInfo.description}
                     link={book.volumeInfo.infoLink}
+                    handleSaveBook={this.handleSaveBook}
                   />
                 ))}
               </Card>
@@ -98,9 +116,29 @@ class BooksContainer extends Component {
             </Card>
           </Col>
         </Row>
+        <Row>
+          <Col size="md-12 sm-12">
+              {this.state.books.length ? (
+                <List>
+                  {this.state.books.map(book => (
+                    <ListItem key={book.id}>
+                      <Link to={"/books/" + book.id}>
+                        <strong>
+                          {book.volumeInfo.title} by {book.volumeInfo.authors}
+                        </strong>
+                      </Link>
+                      <DeleteBtn onClick={() => this.deleteBook(book.id)} />
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </Col>
+          </Row>
       </Container>
     );
   }
 }
 
-export default BooksContainer;
+export default Books;

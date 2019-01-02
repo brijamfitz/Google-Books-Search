@@ -3,11 +3,13 @@ import React from "react";
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
 function SaveBtn(props) {
-    return (
-      <button className="save-btn" onClick={props.handleSaveBook} tabIndex="0">
-        Save Book
+  return (
+    <div className="btn-container">
+      <button className="save-btn" {...props} tabIndex="0">
+        {props.children}
       </button>
-    );
-  }
-  
-  export default SaveBtn;
+    </div>
+  );
+}
+
+export default SaveBtn;
