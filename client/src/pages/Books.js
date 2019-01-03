@@ -53,7 +53,7 @@ class Books extends Component {
   // Delete book from database
   deleteBook = id => {
     API.deleteBook(id)
-      .then(res => this.loadBooks())
+      .then(res => console.log(res.status))
       .catch(err => console.log(err));
   };
 
@@ -70,7 +70,7 @@ class Books extends Component {
       link: this.state.books[0].volumeInfo.infoLink
     },
     alert("Book Saved!"))
-      .then(res => this.loadBooks())
+      .then(res => console.log(res.status))
       .catch(err => console.log(err));
   };
 

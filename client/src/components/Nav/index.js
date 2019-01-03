@@ -6,6 +6,9 @@ const Nav = () => {
       <a className="navbar-brand" href="/">
         Google Books Search
       </a>
+      <a className="navbar-brand" href="/savedbooks">
+        Saved Books
+      </a>
     </nav>
   );
 }

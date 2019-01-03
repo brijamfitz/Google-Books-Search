@@ -4,7 +4,8 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Card from "../components/Card";
-import BookDetail from "../components/BookDetail";
+import SavedBookDetail from "../components/SavedBookDetail";
+// import SaveBtn from "../components/SaveBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
@@ -33,7 +34,7 @@ class SavedBooks extends Component {
             {this.state.books.length ? (
               <Card heading="Saved Books">
                 {this.state.books.map(book => (
-                  <BookDetail
+                  <SavedBookDetail
                     key={book._id}
                     src={book.src}
                     title={book.title}
