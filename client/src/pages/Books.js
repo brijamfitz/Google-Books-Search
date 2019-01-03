@@ -57,7 +57,7 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  // NEED TO POINT TO SPECIFIC BOOK ID AND THEN RELOAD BOOKS
+  // ON CLICK, IT NEEDs TO POINT TO SPECIFIC BOOK ID TO SAVE
   // Save book to database
   handleSaveBook = event => {
     event.preventDefault();

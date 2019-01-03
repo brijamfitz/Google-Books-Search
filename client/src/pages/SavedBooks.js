@@ -26,11 +26,20 @@ class SavedBooks extends Component {
       .catch(err => console.log(err));
   }
 
-  // NEED TO POINT TO SPECIFIC BOOK ID AND THEN RELOAD BOOKS
+  // Loads all books  and sets them to this.state.books
+  loadBooks = () => {
+    API.getBooks()
+      .then(res =>
+        this.setState({ books: res.data })
+      )
+      .catch(err => console.log(err));
+  };
+
+  // ON CLICK, IT NEEDs TO POINT TO THE SPECIFIC BOOK ID TO DELETE
   handleDeleteBook = id => {
     console.log(this.state.books);
     API.deleteBook(this.state.books[0]._id)
-      .then(res => console.log(res.status))
+      .then(res => this.loadBooks())
       .catch(err => console.log(err));
   }
 
