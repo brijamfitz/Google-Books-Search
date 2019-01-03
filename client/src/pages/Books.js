@@ -6,9 +6,9 @@ import Col from "../components/Col";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
 import BookDetail from "../components/BookDetail";
-import DeleteBtn from "../components/DeleteBtn";
-import { List, ListItem } from "../components/List";
-import { Link } from "react-router-dom";
+// import DeleteBtn from "../components/DeleteBtn";
+// import { List, ListItem } from "../components/List";
+// import { Link } from "react-router-dom";
 import API from "../utils/API";
 
 class Books extends Component {
@@ -68,7 +68,8 @@ class Books extends Component {
       date: this.state.books[0].volumeInfo.publishedDate,
       description: this.state.books[0].volumeInfo.description,
       link: this.state.books[0].volumeInfo.infoLink
-    })
+    },
+    alert("Book Saved!"))
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
@@ -110,7 +111,7 @@ class Books extends Component {
             )}
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col size="md-12 sm-12">
               {this.state.books.length ? (
                 <List>
@@ -129,7 +130,7 @@ class Books extends Component {
                 <h3>No Results to Display</h3>
               )}
             </Col>
-          </Row>
+          </Row> */}
       </Container>
     );
   }
