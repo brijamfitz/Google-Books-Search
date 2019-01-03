@@ -9,7 +9,7 @@ const SavedBookDetail = props => {
       <p><strong>Publish Date:</strong> {props.date}</p>
       <p><strong>Description:</strong> {props.description}</p>
       <p><strong>Google Books Link:</strong> <a href={props.link} target={"_blank"} >{props.title}</a></p>
-      <button onClick={props.handleDeleteBook} className="btn btn-primary">
+      <button onClick={props.handleDeleteBook} className="btn btn-primary delete-btn">
         Delete Book
       </button>
       <hr />

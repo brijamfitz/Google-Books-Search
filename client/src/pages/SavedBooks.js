@@ -26,6 +26,14 @@ class SavedBooks extends Component {
       .catch(err => console.log(err));
   }
 
+  // NEED TO POINT TO SPECIFIC BOOK ID AND THEN RELOAD BOOKS
+  handleDeleteBook = id => {
+    console.log(this.state.books);
+    API.deleteBook(this.state.books[0]._id)
+      .then(res => console.log(res.status))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Container fluid>
@@ -42,6 +50,7 @@ class SavedBooks extends Component {
                     date={book.date}
                     description={book.description}
                     link={book.link}
+                    handleDeleteBook={this.handleDeleteBook}
                   />
                 ))}
               </Card>
