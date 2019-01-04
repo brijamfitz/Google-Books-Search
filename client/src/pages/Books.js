@@ -51,14 +51,14 @@ class Books extends Component {
     this.searchBooks(this.state.search);
   };
 
-  // Delete book from database
+  // Deletes book from database
   deleteBook = id => {
     API.deleteBook(id)
       .then(res => console.log(res.status))
       .catch(err => console.log(err));
   };
 
-  // Save book to database
+  // Saves book to database
   handleSaveBook = bookData => {
     // event.preventDefault();
     // console.log(this.state.books);
@@ -88,7 +88,7 @@ class Books extends Component {
                 {this.state.books.map(book => (
                   <BookDetail
                     key={book.id}
-                    // src={book.volumeInfo.imageLinks.thumbnail}
+                    src={book.volumeInfo.imageLinks.thumbnail}
                     title={book.volumeInfo.title}
                     authors={book.volumeInfo.authors}
                     date={book.volumeInfo.publishedDate}

@@ -26,7 +26,7 @@ class SavedBooks extends Component {
       .catch(err => console.log(err));
   }
 
-  // Loads all books
+  // Loads all books (called in promise after user deletes book)
   loadBooks = () => {
     API.getBooks()
       .then(res =>
@@ -35,7 +35,7 @@ class SavedBooks extends Component {
       .catch(err => console.log(err));
   };
 
-  // Deletes a book by its id
+  // Deletes a book by its MongoDB id
   handleDeleteBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
