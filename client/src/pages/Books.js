@@ -22,6 +22,7 @@ class Books extends Component {
     this.setState({ books: [] });
   }
 
+  // Searches the GoogleBooks API and stores data in books array
   searchBooks = query => {
     API.searchBooks(query)
       .then(res =>
@@ -87,7 +88,7 @@ class Books extends Component {
                 {this.state.books.map(book => (
                   <BookDetail
                     key={book.id}
-                    src={book.volumeInfo.imageLinks.thumbnail}
+                    // src={book.volumeInfo.imageLinks.thumbnail}
                     title={book.volumeInfo.title}
                     authors={book.volumeInfo.authors}
                     date={book.volumeInfo.publishedDate}
