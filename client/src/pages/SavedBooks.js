@@ -26,7 +26,7 @@ class SavedBooks extends Component {
       .catch(err => console.log(err));
   }
 
-  // Loads all books  and sets them to this.state.books
+  // Loads all books
   loadBooks = () => {
     API.getBooks()
       .then(res =>
@@ -35,10 +35,9 @@ class SavedBooks extends Component {
       .catch(err => console.log(err));
   };
 
-  // ON CLICK, IT NEEDs TO POINT TO THE SPECIFIC BOOK ID TO DELETE
+  // Deletes a book by its id
   handleDeleteBook = id => {
-    console.log(this.state.books);
-    API.deleteBook(this.state.books[0]._id)
+    API.deleteBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   }
@@ -59,7 +58,7 @@ class SavedBooks extends Component {
                     date={book.date}
                     description={book.description}
                     link={book.link}
-                    handleDeleteBook={this.handleDeleteBook}
+                    handleDeleteBook={() => this.handleDeleteBook(book._id)}
                   />
                 ))}
               </Card>

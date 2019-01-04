@@ -19,7 +19,7 @@ class Books extends Component {
 
   // When this component mounts, search for the default book
   componentDidMount() {
-    this.searchBooks("american pyscho");
+    this.setState({ books: [] });
   }
 
   searchBooks = query => {
@@ -58,20 +58,13 @@ class Books extends Component {
   };
 
   // ON CLICK, IT NEEDs TO POINT TO SPECIFIC BOOK ID TO SAVE
+  // USE BOOKDATA AS PARAMETER, AND IN PROMISE IS WHERE YOU UDPATE THE DATABASE
   // Save book to database
-  handleSaveBook = event => {
-    event.preventDefault();
-    console.log(this.state.books);
-    API.saveBook({ 
-      title: this.state.books[0].volumeInfo.title,
-      src: this.state.books[0].volumeInfo.imageLinks.thumbnail,
-      authors: this.state.books[0].volumeInfo.authors,
-      date: this.state.books[0].volumeInfo.publishedDate,
-      description: this.state.books[0].volumeInfo.description,
-      link: this.state.books[0].volumeInfo.infoLink
-    },
-    alert("Book Saved!"))
-      .then(res => console.log(res.status))
+  handleSaveBook = bookData => {
+    // event.preventDefault();
+    // console.log(this.state.books);
+    API.saveBook(bookData)
+      .then(res => alert("Book Saved!"))
       .catch(err => console.log(err));
   };
 
@@ -102,7 +95,13 @@ class Books extends Component {
                     date={book.volumeInfo.publishedDate}
                     description={book.volumeInfo.description}
                     link={book.volumeInfo.infoLink}
-                    handleSaveBook={this.handleSaveBook}
+                    handleSaveBook={() => this.handleSaveBook({ 
+                      title: book.volumeInfo.title,
+                      src: book.volumeInfo.imageLinks.thumbnail,
+                      authors: book.volumeInfo.authors,
+                      date: book.volumeInfo.publishedDate,
+                      description: book.volumeInfo.description,
+                      link: book.volumeInfo.infoLink})}
                   />
                 ))}
                 
