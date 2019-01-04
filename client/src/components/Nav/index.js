@@ -10,7 +10,20 @@ const Nav = () => {
         Saved Books
       </a>
     </nav>
+
+    // <ul className="nav nav-tabs" style={{ marginBottom: "40px" }}>
+    //   <li className="nav-item">
+    //     <a className="nav-link active" href="/">
+    //       Google Books Search
+    //     </a>
+    //   </li>
+    //   <li className="nav-item">
+    //     <a className="nav-link" href="/savedbooks">
+    //       Saved Books
+    //     </a>
+    //   </li>
+    // </ul>
   );
-}
+};
 
 export default Nav;

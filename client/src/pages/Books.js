@@ -57,8 +57,6 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  // ON CLICK, IT NEEDs TO POINT TO SPECIFIC BOOK ID TO SAVE
-  // USE BOOKDATA AS PARAMETER, AND IN PROMISE IS WHERE YOU UDPATE THE DATABASE
   // Save book to database
   handleSaveBook = bookData => {
     // event.preventDefault();
@@ -111,26 +109,6 @@ class Books extends Component {
             )}
           </Col>
         </Row>
-        {/* <Row>
-          <Col size="md-12 sm-12">
-              {this.state.books.length ? (
-                <List>
-                  {this.state.books.map(book => (
-                    <ListItem key={book.id}>
-                      <Link to={"/books/" + book._id}>
-                        <strong>
-                          {book.volumeInfo.title} by {book.volumeInfo.authors}
-                        </strong>
-                      </Link>
-                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                    </ListItem>
-                  ))}
-                </List>
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-            </Col>
-          </Row> */}
       </Container>
     );
   }
