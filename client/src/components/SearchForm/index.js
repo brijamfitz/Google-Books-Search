@@ -3,7 +3,7 @@ import React from "react";
 const SearchForm = props => {
   return (
     <form>
-      <div className="form-group">
+      <div className="form-group" style={{ textAlign: "center" }}>
         <input style={{ textAlign: "center" }}
           onChange={props.handleInputChange}
           value={props.value}

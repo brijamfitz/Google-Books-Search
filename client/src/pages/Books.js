@@ -69,7 +69,7 @@ class Books extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-            <Card heading="Search">
+            <Card heading="Search Google Books">
               <SearchForm
                 value={this.state.search}
                 handleInputChange={this.handleInputChange}
