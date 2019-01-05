@@ -5,14 +5,13 @@ import Row from "../components/Row";
 import Col from "../components/Col";
 import Card from "../components/Card";
 import SavedBookDetail from "../components/SavedBookDetail";
-// import SaveBtn from "../components/SaveBtn";
-// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 class SavedBooks extends Component {
   state = {
     books: []
   };
+  
   // When this component mounts, grab the books from /api/books
   componentDidMount() {
     API.getBooks()
@@ -44,7 +43,7 @@ class SavedBooks extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
           <Col size="md-12">
             {this.state.books.length ? (
@@ -63,7 +62,7 @@ class SavedBooks extends Component {
                 ))}
               </Card>
             ) : (
-              <h3>No Results to Display</h3>
+              <Card heading="Saved Books"></Card>
             )}
           </Col>
         </Row>

@@ -4,13 +4,13 @@ const SearchForm = props => {
   return (
     <form>
       <div className="form-group">
-        <input
+        <input style={{ textAlign: "center" }}
           onChange={props.handleInputChange}
           value={props.value}
           name="search"
           type="text"
           className="form-control"
-          placeholder="Search for a Book, Author, Topic, etc."
+          placeholder="Search for a Book, Author, or Topic"
           id="search"
         />
         <br />

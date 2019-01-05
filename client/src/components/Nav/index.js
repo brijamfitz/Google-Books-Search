@@ -1,29 +1,24 @@
 import React from "react";
 
-const Nav = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{ marginBottom: "20px" }}>
-      <a className="navbar-brand" href="/">
-        Google Books Search
-      </a>
-      <a className="navbar-brand" href="/savedbooks">
-        Saved Books
-      </a>
+const Nav = props => (
+  <div>
+    <nav className="navbar fixed-top" style={{ marginBottom: "40px", backgroundColor: "royalblue", height: "50px" }}>
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a href="/" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
+            React Google Books Search
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/savedbooks" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
+            Saved Books
+          </a>
+        </li>
+      </ul>
     </nav>
-
-    // <ul className="nav nav-tabs" style={{ marginBottom: "40px" }}>
-    //   <li className="nav-item">
-    //     <a className="nav-link active" href="/">
-    //       Google Books Search
-    //     </a>
-    //   </li>
-    //   <li className="nav-item">
-    //     <a className="nav-link" href="/savedbooks">
-    //       Saved Books
-    //     </a>
-    //   </li>
-    // </ul>
-  );
-};
+  </div>
+);
 
 export default Nav;

@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-// import Jumbotron from "../components/Jumbotron";
+import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
 import BookDetail from "../components/BookDetail";
-// import DeleteBtn from "../components/DeleteBtn";
-// import { List, ListItem } from "../components/List";
-// import { Link } from "react-router-dom";
 import API from "../utils/API";
 
 class Books extends Component {
@@ -16,11 +13,6 @@ class Books extends Component {
     books: [],
     search: ""
   };
-
-  // When this component mounts, search for the default book
-  // componentDidMount() {
-  //   this.setState({ books: [] });
-  // }
 
   // Searches the GoogleBooks API and stores data in books array
   searchBooks = query => {
@@ -72,7 +64,12 @@ class Books extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-            <Card heading="Google Books Search">
+            <Jumbotron />
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-12">
+            <Card heading="Search">
               <SearchForm
                 value={this.state.search}
                 handleInputChange={this.handleInputChange}
@@ -84,7 +81,7 @@ class Books extends Component {
         <Row>
           <Col size="md-12">
             {this.state.books.length ? (
-              <Card>
+              <Card heading="Search Results">
                 {this.state.books.map(book => (
                   <BookDetail
                     key={book.id}
@@ -105,10 +102,9 @@ class Books extends Component {
                       link: book.volumeInfo.infoLink})}
                   />
                 ))}
-                
               </Card>
             ) : (
-              <h3>No Results to Display</h3>
+              <Card heading="Search Results"></Card>
             )}
           </Col>
         </Row>
