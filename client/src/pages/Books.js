@@ -86,24 +86,42 @@ class Books extends Component {
                   <BookDetail
                     key={book.id}
                     src={book.volumeInfo.imageLinks 
-                      ? book.volumeInfo.imageLinks.thumbnail
-                      : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png"}
-                    title={book.volumeInfo.title}
+                        ? book.volumeInfo.imageLinks.thumbnail
+                        : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png"}
+                    title={book.volumeInfo.title 
+                        ? book.volumeInfo.title 
+                        : "No Title Available"}
                     authors={book.volumeInfo.authors
-                      ? book.volumeInfo.authors.join(", ")
-                      : "N/A"}
-                    date={book.volumeInfo.publishedDate}
-                    description={book.volumeInfo.description}
-                    link={book.volumeInfo.infoLink}
+                        ? book.volumeInfo.authors.join(", ")
+                        : "No Authors Available"}
+                    date={book.volumeInfo.publishedDate 
+                        ? book.volumeInfo.publishedDate 
+                        : "No Publish Date Available"}
+                    description={book.volumeInfo.description 
+                        ? book.volumeInfo.description 
+                        : "No Description Available"}
+                    link={book.volumeInfo.infoLink
+                        ? book.volumeInfo.infoLink
+                        : "No Link Available"}
                     handleSaveBook={() => this.handleSaveBook({ 
-                      title: book.volumeInfo.title,
+                      title: book.volumeInfo.title 
+                          ? book.volumeInfo.title 
+                          : "No Title Available",
                       src: book.volumeInfo.imageLinks 
-                        ? book.volumeInfo.imageLinks.thumbnail 
-                        : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png",
-                      authors: book.volumeInfo.authors,
-                      date: book.volumeInfo.publishedDate,
-                      description: book.volumeInfo.description,
-                      link: book.volumeInfo.infoLink})}
+                          ? book.volumeInfo.imageLinks.thumbnail 
+                          : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png",
+                      authors: book.volumeInfo.authors
+                          ? book.volumeInfo.authors.join(", ")
+                          : "No Authors Available",
+                      date: book.volumeInfo.publishedDate 
+                          ? book.volumeInfo.publishedDate 
+                          : "No Publish Date Available",
+                      description: book.volumeInfo.description 
+                          ? book.volumeInfo.description 
+                          : "No Description Available",
+                      link: book.volumeInfo.infoLink
+                          ? book.volumeInfo.infoLink
+                          : "No Link Available"})}
                   />
                 ))}
               </Card>

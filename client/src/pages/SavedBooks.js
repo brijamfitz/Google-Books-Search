@@ -50,14 +50,24 @@ class SavedBooks extends Component {
                 {this.state.books.map(book => (
                   <SavedBookDetail
                     key={book._id}
-                    src={book 
+                    src={book.src 
                       ? book.src 
                       : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png"}
-                    title={book.title}
-                    authors={book.authors.join(", ")}
-                    date={book.date}
-                    description={book.description}
-                    link={book.link}
+                    title={book.title
+                      ? book.title
+                      : "No Title Available"}
+                    authors={book.authors
+                      ? book.authors.join(", ")
+                      : "No Authors Available"}
+                    date={book.date
+                      ? book.date
+                      : "No Date Available"}
+                    description={book.description
+                      ? book.description
+                      : "No Description Available"}
+                    link={book.link
+                      ? book.link
+                      : "No Link Available"}
                     handleDeleteBook={() => this.handleDeleteBook(book._id)}
                   />
                 ))}

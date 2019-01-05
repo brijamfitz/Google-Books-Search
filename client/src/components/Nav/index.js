@@ -5,14 +5,14 @@ const Nav = props => (
     <nav className="navbar fixed-top" style={{ marginBottom: "40px", backgroundColor: "royalblue", height: "50px" }}>
       <ul className="nav navbar-nav navbar-left">
         <li>
-          <a href="/" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
+          <a href="/" style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
             React Google Books Search
           </a>
         </li>
       </ul>
       <ul className="nav navbar-nav navbar-right">
         <li>
-          <a href="/savedbooks" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
+          <a href="/savedbooks" style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
             Saved Books
           </a>
         </li>
