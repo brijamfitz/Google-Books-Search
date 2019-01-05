@@ -3,14 +3,14 @@ import React from "react";
 const Nav = props => (
   <div>
     <nav className="navbar fixed-top" style={{ marginBottom: "40px", backgroundColor: "royalblue", height: "50px" }}>
-      <ul class="nav navbar-nav navbar-left">
+      <ul className="nav navbar-nav navbar-left">
         <li>
           <a href="/" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
             React Google Books Search
           </a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul className="nav navbar-nav navbar-right">
         <li>
           <a href="/savedbooks" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
             Saved Books
