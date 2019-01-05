@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
@@ -11,7 +10,7 @@ class SavedBooks extends Component {
   state = {
     books: []
   };
-  
+
   // When this component mounts, grab the books from /api/books
   componentDidMount() {
     API.getBooks()
@@ -64,11 +63,6 @@ class SavedBooks extends Component {
             ) : (
               <Card heading="Saved Books"></Card>
             )}
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/">← Back to Search</Link>
           </Col>
         </Row>
       </Container>
