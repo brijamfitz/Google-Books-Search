@@ -89,7 +89,9 @@ class Books extends Component {
                       ? book.volumeInfo.imageLinks.thumbnail
                       : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png"}
                     title={book.volumeInfo.title}
-                    authors={book.volumeInfo.authors}
+                    authors={book.volumeInfo.authors
+                      ? book.volumeInfo.authors.join()
+                      : "N/A"}
                     date={book.volumeInfo.publishedDate}
                     description={book.volumeInfo.description}
                     link={book.volumeInfo.infoLink}
